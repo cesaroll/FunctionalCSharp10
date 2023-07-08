@@ -1,7 +1,9 @@
 @using Models
 <table class="table table-striped">
-    <tr>
-        @foreach(var (year, month) in this.ForTimestamp.GetYearMonths())
+    @foreach (var row in DateTime.UtcNow.GetDecadeMonths().GroupBy(pair => pair.year))
+    {
+        <tr>
+        @foreach(var (year, month) in row)
         {
             if(month == 1)
             {
@@ -10,6 +12,7 @@
             <td>@($"{this.MonthNames[month]}")</td>
         }
     </tr>
+    }
 </table>
 @code {
     [Parameter]
