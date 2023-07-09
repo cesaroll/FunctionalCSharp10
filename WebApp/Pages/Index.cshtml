@@ -1,10 +1,24 @@
 ﻿@page
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@* @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers *@
 @model IndexModel
+@using Models.Types;
 @{
     ViewData["Title"] = "Home page";
 }
-
+@*
 <div class="text-center">
     <component type="typeof(Components.BusinessMonth)" render-mode="ServerPrerendered" />
-</div>
+</div> *@
+
+<table class="table table-striped">
+    @{int ordinal = 0;}
+    <tr><th>#</th><th>Name</th><th>SKU</th></tr>
+    @foreach (Part part in Model.AllPArts.OrderBy(part => part.Name))
+    {
+        <tr>
+            <th>@(++ordinal)</th>
+            <td>@part.Name</td>
+            <td>@part.Sku.Value</td>
+        </tr>
+    }
+</table>
