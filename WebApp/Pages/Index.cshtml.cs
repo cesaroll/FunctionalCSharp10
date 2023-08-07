@@ -18,7 +18,7 @@ public class IndexModel : PageModel
 
     void F()
     {
-        Part part = new("Something", new("SOMESKU"));
+        Part part = new(new Guid(), "Something", new("SOMESKU"));
         part.Sku.ToCode39(25);
     }
 
