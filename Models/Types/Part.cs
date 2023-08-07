@@ -1,3 +1,3 @@
 namespace Models.Types;
 
-public record Part(string Name, StockKeepingUnit Sku);
+public record Part(Guid Id, string Name, StockKeepingUnit Sku);
